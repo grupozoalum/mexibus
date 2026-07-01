@@ -209,7 +209,7 @@ body {
 .registro-title img { max-width:600px; width:80%; }
 .registro-grid {
   display:flex;
-  gap:20px;
+  gap:30px;
   justify-content:center;
   position:relative;
   z-index:1;
@@ -247,7 +247,7 @@ body {
 .form-field select option { background:#2a1b8a; color:white; }
 /* IMPORTANTE CENTER */
 .importante-col {
-  flex:0 0 30%;
+  flex:0 0 42%; 
 }
 .importante-col img {
   width:100%;
@@ -257,7 +257,7 @@ body {
 }
 /* PAYMENT RIGHT */
 .payment-col {
-  flex:0 0 30%;
+  flex:0 0 42%; 
   display:flex;
   flex-direction:column;
   gap:16px;
@@ -379,6 +379,100 @@ body {
 }
 .patro-proximamente img { max-width:380px; width:70%; opacity:0.9; }
 
+/* ─── CONTACTO ─── */
+.contacto-section {
+  position: relative;
+  background: #2b1f85; /* Tono morado ligeramente distinto al fondo principal para destacar */
+  padding: 60px 5%;
+  overflow: hidden;
+  border-top: 2px solid rgba(255,255,255,0.05);
+}
+.contacto-title-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin-bottom: 50px;
+}
+.contacto-title-container h2 {
+  color: white;
+  font-size: 3.2rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  position: relative;
+  z-index: 2;
+  margin: 0;
+}
+.contacto-title-container .rayos {
+  position: absolute;
+  width: 380px; /* Ancho para que los rayos queden a los lados del texto */
+  z-index: 1;
+}
+.contacto-grid {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  gap: 50px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.contacto-izq {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  padding-right: 20px;
+}
+.contacto-izq .corazon {
+  height: 50px;
+}
+.contacto-izq .logo-principal {
+  max-width: 320px;
+  width: 100%;
+  margin-bottom: 10px;
+}
+.contacto-izq .redes {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  align-items: flex-end; /* Alinea los íconos sociales pegados a la línea central */
+  width: 100%;
+}
+.contacto-izq .redes img {
+  height: 30px;
+  object-fit: contain;
+}
+.contacto-divisor {
+  width: 2px;
+  background: white;
+  opacity: 0.7;
+  border-radius: 2px;
+}
+.contacto-der {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 15px;
+  padding-left: 20px;
+}
+.contacto-der .logo-trans {
+  height: 40px;
+  align-self: center; /* Centra el logo de transcomunicador sobre su propia lista */
+  margin-bottom: 15px;
+}
+.contacto-der .redes {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  align-items: flex-start;
+}
+.contacto-der .redes img {
+  height: 30px;
+  object-fit: contain;
+}
 </style>
 </head>
 <body>
@@ -394,7 +488,7 @@ body {
   <a href="#patrocinadores"><img src="cabecera_5.png" alt="Patrocinadores"></a>
   <a href="#contacto"><img src="cabecera_6.png" alt="Contacto"></a>
 </nav>
-  <div class="nav-donar"><img src="cacecera_7.png" alt="Donar"></div>
+  <div class="nav-donar"><img src="Recurso 49.png" alt="Donar"></div>
 </header>
 
 <!-- ═══ HERO ═══ -->
@@ -411,7 +505,7 @@ body {
   <div class="hero-visuals">
     <img class="runner" src="corredor.png">
     
-    <img class="hexagono" src="hexagono.png">
+    <img class="hexagono" src="Recurso 48.png">
   </div>
 </section>
 
@@ -429,7 +523,7 @@ body {
   <div class="panel-item"><img src="m6.png" alt="Kit corredor"></div>
 </div>
 
-<!-- ═══ INICIA TU REGISTRO ═══ --
+
 
 <!-- ═══ ORGANIZADORES ═══ -->
 <section id="organizadores" class="org-section">
@@ -437,43 +531,81 @@ body {
 
   <div class="org-title">
     <img src="organizadores.png" alt="Organizadores">
-  
   </div>
 
   <div class="org-grid">
     <img src="transcomunicador.png" alt="transcomunicador">
-    <img src="acentro_de_autismo.png" alt="Puntos de Hidratacion">
-    <img src="edomex.png" alt="Puntos de Hidratacion">
+    <img src="acentro_de_autismo.png" alt="Centro Autismo">
+    <img src="edomex.png" alt="Edomex">
     <div class="org-divider" style="flex-basis:100%;"></div>
-    <img src="ecatepec.png" alt="Puntos de Hidratacion">
-    <img src="coacalco.png" alt="Puntos de Hidratacion">
-    <img src="tultitlan.png" alt="Puntos de Hidratacion">
+    <img src="ecatepec.png" alt="Ecatepec">
+    <img src="coacalco.png" alt="Coacalco">
+    <img src="tultitlan.png" alt="Tultitlan">
     <div class="org-divider" style="flex-basis:100%;"></div>
-    <img src="movilidad.png" alt="Puntos de Hidratacion">
-    <img src="sitramitem.png" alt="Puntos de Hidratacion">
-    <img src="urbanbus.png" alt="Puntos de Hidratacion"></div>
+    <img src="movilidad.png" alt="Movilidad">
+    <img src="sitramitem.png" alt="Sitramytem">
+    <img src="urbanbus.png" alt="Urbanbus">
   </div>
 </section>
 
 <!-- ═══ PATROCINADORES ═══ -->
 <section id="patrocinadores" class="patro-section">
   <img class="org-watermark" src="logo_transparente.png" alt="">
+  
   <div class="patro-title">
     <img src="patrocinadores.png" alt="Patrocinadores">
-  
   </div>
+  
   <div class="patro-unete">
     <img src="unete.png" alt="Únete">
-  
   </div>
 
   <div class="patro-grid">
     <div class="patro-box"></div><div class="patro-box"></div><div class="patro-box"></div><div class="patro-box"></div><div class="patro-box"></div><div class="patro-box"></div><div class="patro-box"></div><div class="patro-box"></div><div class="patro-box"></div><div class="patro-box"></div><div class="patro-box"></div><div class="patro-box"></div><div class="patro-box"></div><div class="patro-box"></div><div class="patro-box"></div><div class="patro-box"></div>
-  
-  </div>
-
-    
   </div>
 </section>
+
+<!-- ═══ CONTACTO ═══ -->
+<section id="contacto" class="contacto-section">
+  
+  <!-- Título con Rayos detrás -->
+  <div class="contacto-title-container">
+    <img class="rayos" src="recurso 50.png" alt="Rayos">
+    
+  </div>
+
+  <!-- Contenedor Principal Izquierda / Derecha -->
+  <div class="contacto-grid">
+    
+    <!-- Lado Izquierdo (Autismo Teletón) -->
+    <div class="contacto-izq">
+      <img class="corazon" src="recurso 51.png" alt="Corazón">
+      <img class="logo-principal" src="recurso 53.png" alt="Autismo Teletón">
+      
+      <div class="redes">
+        <img src="recurso 54.png" alt="Facebook Centro Autismo Teletón">
+        <img src="recurso 55.png" alt="Instagram Autismo Teletón">
+      </div>
+    </div>
+
+    <!-- Línea Blanca Divisoria -->
+    <div class="contacto-divisor"></div>
+
+    <!-- Lado Derecho (Mexibus / Transcomunicador) -->
+    <div class="contacto-der">
+      <img class="logo-trans" src="transcomunicador.png" alt="Transcomunicador">
+      
+      <div class="redes">
+        <img src="recurso 57.png" alt="Correo Electrónico">
+        <img src="recurso 58.png" alt="WhatsApp">
+        <img src="recurso 59.png" alt="Facebook Mexibus">
+        <img src="recurso 60.png" alt="Instagram Mexibus">
+        <img src="recurso 61.png" alt="X Mexibus">
+      </div>
+    </div>
+
+  </div>
+</section>
+
 </body>
 </html>
