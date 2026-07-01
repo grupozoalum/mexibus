@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1200">
+<title>Carrera Mexi Teletón 2026</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+html {
+  scroll-behavior: smooth;
+}
+/* ─── BODY (Fuerza el ancho del escritorio) ─── */
+body { 
+  background:#1a1466; 
+  overflow-x:hidden; 
+  font-family:Arial, sans-serif; 
+  min-width: 1200px; /* Obliga a mantener las proporciones intactas */
+}
+
+/* ─── NAVBAR (Fuerza la barra en una sola línea) ─── */
+.navbar {
+  background:#1a1466;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:10px 40px;
+  position:sticky;
+  top:0;
+  z-index:100;
+  border-bottom:1px solid rgba(255,255,255,0.1);
+  flex-wrap: nowrap; /* Evita que el logo o el botón donar se bajen */
+  width: 100%;
+}
+
+.nav-logo img { height:52px; }
+
+.nav-links {
+  display:flex;
+  align-items:center;
+  gap:32px;
+  flex-wrap: nowrap; /* Evita que los iconos del menú se apilen */
+  justify-content: center;
+}
+.nav-links img { height:32px; cursor:pointer; transition:opacity .2s; }
+.nav-links img:hover { opacity:.75; }
+
+.nav-donar img { height:52px; cursor:pointer; transition:transform .2s; }
+.nav-donar img:hover { transform:scale(1.05); }
+
+/* ─── HERO ─── */
+.hero {
+  position:relative;
+  width:100%;
+  min-height:600px;
+  background-size: cover; 
+  background-position: center; 
+  background-repeat: no-repeat;
+  background-image:url('fondo.png');
+  background-size:cover;
+  background-position:center top;
+  overflow:hidden;
+  display:flex;
+  align-items:center;
+  padding:40px 5% 40px 5%;
+}
+.hero::before {
+  content:'';
+  position:absolute;
+  inset:0;
+  background:linear-gradient(to right, rgba(15,8,90,0.7) 40%, rgba(15,8,90,0.1) 100%);
+  z-index:1;
+}
+.hero-content {
+  position:relative;
+  z-index:3;
+  width:52%;
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+}
+.hero-date {
+  display:flex;
+  align-items:center;
+  gap:10px;
+  color:#f7c201;
+  font-size:2.4rem;
+  font-weight:900;
+  text-transform:uppercase;
+  letter-spacing:2px;
+}
+.hero-date img { height:22px; }
+.hero-logos {
+  display:flex;
+  align-items:center;
+  gap:20px;
+}
+.hero-logos img { height:56px; }
+.hero-main-logo img { width:100%; max-width:620px; }
+.hero-subtitles {
+  color:white;
+  font-size:0.9rem;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:1px;
+  line-height:1.6;
+}
+.hero-subtitles span.yellow { color:#f7c201; }
+.hero-subtitles .solidarity {
+  font-size:0.85rem;
+  color:#f7c201;
+}
+.hero-cta img { height:62px; cursor:pointer; transition:transform .2s; margin-top:6px; }
+.hero-cta img:hover { transform:scale(1.05); }
+.hero-visuals {
+  position:absolute;
+  right:-3%;
+  bottom:0;
+  width:55%;
+  height:100%;
+  z-index:2;
+}
+.runner {
+  position:absolute;
+  right:0;
+  bottom:0;
+  height:108%;
+  object-fit:contain;
+}
+.hexagono {
+  position:absolute;
+  bottom:8%;
+  right:48%;
+  width:175px;
+  z-index:4;
+  filter:drop-shadow(0 8px 16px rgba(0,0,0,0.5));
+}
+
+/* ─── SECCIÓN PANELES ─── */
+.panels-row {
+  display:flex;
+  gap:0;
+  background:#1a1466;
+  padding:28px 2% 8px;
+  justify-content:center;
+  align-items:flex-start;
+}
+.panel-item {
+  flex:1;
+  max-width:32%;
+  padding:0 12px;
+}
+.panel-item img {
+  width:100%;
+  height:auto;
+  display:block;
+}
+.panels-row-2 {
+  display:flex;
+  gap:0;
+  background:#1a1466;
+  padding:8px 2% 28px;
+  justify-content:center;
+  align-items:flex-start;
+}
+.panels-row-2 .panel-item {
+  flex:1;
+  max-width:32%;
+  padding:0 12px;
+}
+.panels-row-2 .panel-item img {
+  width:100%;
+  height:auto;
+  display:block;
+}
+
+/* ─── REGISTRO ─── */
+.registro-section {
+  position:relative;
+  background:#1a1466;
+  padding:40px 3%;
+  overflow:hidden;
+}
+.curva-izq {
+  position:absolute;
+  left:-2%;
+  top:5%;
+  height:90%;
+  object-fit:contain;
+  opacity:0.85;
+  pointer-events:none;
+  z-index:0;
+}
+.curva-der {
+  position:absolute;
+  right:-2%;
+  top:5%;
+  height:90%;
+  object-fit:contain;
+  opacity:0.85;
+  pointer-events:none;
+  z-index:0;
+}
+.registro-title {
+  text-align:center;
+  margin-bottom:32px;
+  position:relative;
+  z-index:1;
+}
+.registro-title img { max-width:600px; width:80%; }
+.registro-grid {
+  display:flex;
+  gap:20px;
+  justify-content:center;
+  position:relative;
+  z-index:1;
+  align-items:flex-start;
+}
+/* FORM LEFT */
+.form-col {
+  flex:0 0 30%;
+  background:rgba(120,160,220,0.18);
+  border-radius:12px;
+  padding:22px 18px;
+  border:1px solid rgba(150,180,255,0.3);
+}
+.form-field {
+  margin-bottom:10px;
+}
+.form-field input, .form-field select {
+  width:100%;
+  background:rgba(180,220,255,0.35);
+  border:none;
+  border-radius:6px;
+  padding:10px 12px;
+  color:white;
+  font-size:0.9rem;
+  font-weight:600;
+  outline:none;
+}
+.form-field input::placeholder { color:rgba(255,255,255,0.75); }
+.form-field select {
+  appearance:none;
+  cursor:pointer;
+  background-repeat:no-repeat;
+  background-position:right 12px center;
+}
+.form-field select option { background:#2a1b8a; color:white; }
+/* IMPORTANTE CENTER */
+.importante-col {
+  flex:0 0 30%;
+}
+.importante-col img {
+  width:100%;
+  height:auto;
+  display:block;
+  border-radius:12px;
+}
+/* PAYMENT RIGHT */
+.payment-col {
+  flex:0 0 30%;
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+}
+.payment-col img {
+  width:100%;
+  height:auto;
+  display:block;
+  border-radius:12px;
+}
+.continuar-wrap {
+  text-align:center;
+  margin-top:28px;
+  position:relative;
+  z-index:1;
+}
+.continuar-wrap img {
+  height:68px;
+  cursor:pointer;
+  transition:transform .2s;
+}
+.continuar-wrap img:hover { transform:scale(1.05); }
+
+/* ─── ORGANIZADORES ─── */
+.org-section {
+  position:relative;
+  background:#1a1466;
+  padding:40px 5% 50px;
+  overflow:hidden;
+}
+.org-watermark {
+  position:absolute;
+  bottom:0;
+  left:50%;
+  transform:translateX(-50%);
+  width:80%;
+  opacity:0.08;
+  pointer-events:none;
+}
+.org-title {
+  text-align:center;
+  margin-bottom:36px;
+}
+.org-title img { max-width:700px; width:80%; }
+.org-lightning {
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:16px;
+  margin-bottom:36px;
+}
+.org-lightning img { height:28px; }
+.org-grid {
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  align-items:center;
+  gap:32px 48px;
+  max-width:1100px;
+  margin:0 auto;
+  position:relative;
+  z-index:1;
+}
+.org-grid img {
+  max-height:80px;
+  max-width:200px;
+  width:auto;
+  object-fit:contain;
+  filter:brightness(1.05);
+}
+.org-divider {
+  width:100%;
+  height:1px;
+  background:rgba(255,255,255,0.12);
+  margin:12px 0;
+}
+
+/* ─── PATROCINADORES ─── */
+.patro-section {
+  background:#1a1466;
+  padding:40px 5% 60px;
+  border-top:2px solid rgba(247,194,1,0.25);
+}
+.patro-title {
+  text-align:center;
+  margin-bottom:8px;
+}
+.patro-title img { max-width:700px; width:80%; }
+.patro-unete {
+  text-align:center;
+  margin-bottom:32px;
+}
+.patro-unete img { max-width:260px; width:60%; }
+.patro-grid {
+  display:grid;
+  grid-template-columns:repeat(4, 1fr);
+  gap:14px;
+  max-width:1100px;
+  margin:0 auto 30px;
+}
+.patro-box {
+  border:2px dashed rgba(255,255,255,0.3);
+  border-radius:10px;
+  height:90px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:rgba(255,255,255,0.25);
+  font-size:0.7rem;
+  text-transform:uppercase;
+  letter-spacing:1px;
+  transition:border-color .2s;
+  cursor:pointer;
+}
+.patro-box:hover { border-color:rgba(247,194,1,0.5); }
+.patro-proximamente {
+  text-align:center;
+  margin-top:20px;
+}
+.patro-proximamente img { max-width:380px; width:70%; opacity:0.9; }
+
+</style>
+</head>
+<body>
+
+<!-- ═══ NAVBAR ═══ -->
+<header class="navbar">
+  <div class="nav-logo"><img src="cabezera_1.png" alt="Carrera Mexi Teletón 2026"></div>
+  
+  <nav class="nav-links">
+  <a href="#informacion"><img src="cabecera_2.png" alt="Información"></a>
+  <a href="#inscripcion"><img src="cabecera_3.png" alt="Inscripción"></a>
+  <a href="#organizadores"><img src="cabezera4.png" alt="Organizadores"></a>
+  <a href="#patrocinadores"><img src="cabecera_5.png" alt="Patrocinadores"></a>
+  <a href="#contacto"><img src="cabecera_6.png" alt="Contacto"></a>
+</nav>
+  <div class="nav-donar"><img src="cacecera_7.png" alt="Donar"></div>
+</header>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero">
+  <div class="hero-content">
+ 
+   <div class="hero-main-logo"> 
+      <img src="logo_1.png">
+    </div>
+    <div class="hero-cta">
+      <img src="inscribete.png">
+    </div>
+  </div>
+  <div class="hero-visuals">
+    <img class="runner" src="corredor.png">
+    
+    <img class="hexagono" src="hexagono.png">
+  </div>
+</section>
+
+<!-- ═══ ROW 1: DISTANCIAS · RUTA · CATEGORÍAS ═══ -->
+<div id="informacion" class="panels-row">
+  <div class="panel-item"><img src="m1.png" alt="Distancias"></div>
+  <div class="panel-item"><img src="m2.png" alt="Ruta"></div>
+  <div class="panel-item"><img src="m3.png" alt="Categorías"></div>
+</div>
+
+<!-- ═══ ROW 2: HIDRATACIÓN · INFORMACIÓN · KIT ═══ -->
+<div class="panels-row-2">
+  <div class="panel-item"><img src="m4.png" alt="Puntos de Hidratacion"></div>
+  <div class="panel-item"><img src="m5.png" alt="Informacion"></div>
+  <div class="panel-item"><img src="m6.png" alt="Kit corredor"></div>
+</div>
+
+<!-- ═══ INICIA TU REGISTRO ═══ --
+
+<!-- ═══ ORGANIZADORES ═══ -->
+<section id="organizadores" class="org-section">
+  <img class="org-watermark" src="logo_transparente.png" alt="">
+
+  <div class="org-title">
+    <img src="organizadores.png" alt="Organizadores">
+  
+  </div>
+
+  <div class="org-grid">
+    <img src="transcomunicador.png" alt="transcomunicador">
+    <img src="acentro_de_autismo.png" alt="Puntos de Hidratacion">
+    <img src="edomex.png" alt="Puntos de Hidratacion">
+    <div class="org-divider" style="flex-basis:100%;"></div>
+    <img src="ecatepec.png" alt="Puntos de Hidratacion">
+    <img src="coacalco.png" alt="Puntos de Hidratacion">
+    <img src="tultitlan.png" alt="Puntos de Hidratacion">
+    <div class="org-divider" style="flex-basis:100%;"></div>
+    <img src="movilidad.png" alt="Puntos de Hidratacion">
+    <img src="sitramitem.png" alt="Puntos de Hidratacion">
+    <img src="urbanbus.png" alt="Puntos de Hidratacion"></div>
+  </div>
+</section>
+
+<!-- ═══ PATROCINADORES ═══ -->
+<section class="patro-section">
+  <img class="org-watermark" src="logo_transparente.png" alt="">
+  <div class="patro-title">
+    <img src="patrocinadores.png" alt="Patrocinadores">
+  
+  </div>
+  <div class="patro-unete">
+    <img src="unete.png" alt="Únete">
+  
+  </div>
+
+  <div class="patro-grid">
+    <div class="patro-box"></div><div class="patro-box"></div><div class="patro-box"></div><div class="patro-box"></div><div class="patro-box"></div><div class="patro-box"></div><div class="patro-box"></div><div class="patro-box"></div><div class="patro-box"></div><div class="patro-box"></div><div class="patro-box"></div><div class="patro-box"></div><div class="patro-box"></div><div class="patro-box"></div><div class="patro-box"></div><div class="patro-box"></div>
+  
+  </div>
+
+    
+  </div>
+</section>
+</body>
+</html>
